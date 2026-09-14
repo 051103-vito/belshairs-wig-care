@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Lenis from 'lenis'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -10,6 +10,15 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import CareGuide from './pages/CareGuide.jsx'
+
+// Scroll to top on every route change
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [pathname])
+  return null
+}
 
 function HomePage() {
   return (
@@ -52,10 +61,13 @@ export default function App() {
   }, [])
 
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/care/:slug" element={<CareGuidePage />} />
-      <Route path="*" element={<HomePage />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/care/:slug" element={<CareGuidePage />} />
+        <Route path="*" element={<HomePage />} />
+      </Routes>
+    </>
   )
 }

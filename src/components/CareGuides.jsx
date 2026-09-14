@@ -1,13 +1,5 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { Droplets, Wand2, Package, Clock, Lightbulb } from 'lucide-react'
-import { Link } from 'react-router-dom'
-import boneImg from '../assets/images/bone-straight.jpeg'
-import bodyImg from '../assets/images/body-wave.jpeg'
-import curlyImg from '../assets/images/curly.jpeg'
-import pixieImg from '../assets/images/pixie-cut.jpeg'
-import bouncyHumanImg from '../assets/images/bouncy-wavy-human.jpeg'
-import straightBlendImg from '../assets/images/straight-blend.jpeg'
-import premiumWavyImg from '../assets/images/premium-wavy-blend.jpeg'
 
 const guides = [
   { id: 1, icon: Droplets, title: 'Washing Your Wig', iconBg: 'from-blue-100 to-cyan-50',
@@ -22,16 +14,6 @@ const guides = [
   { id: 4, icon: Clock, title: 'Making It Last', iconBg: 'from-green-100 to-emerald-50',
     steps: ['Avoid sleeping in your wig — friction causes tangling and shedding.', 'Deep condition human hair units every 2 weeks.', 'Trim split ends every few months to keep it looking fresh.', 'Use a leave-in conditioner spray for daily softness.', 'Handle the lace front delicately — never pull or tug.', 'Keep blend wigs away from steam, oven heat and direct sunlight.'],
     tip: 'A well-maintained human hair wig lasts 1–3 years. Blend wigs typically last 6–12 months.' },
-]
-
-const TEXTURES = [
-  { label: 'Bone Straight', slug: 'bone-straight-human', img: boneImg },
-  { label: 'Body Wave', slug: 'body-wave-human', img: bodyImg },
-  { label: 'Curly', slug: 'curly-human', img: curlyImg },
-  { label: 'Pixie Cut', slug: 'pixie-human', img: pixieImg },
-  { label: 'Bouncy / Wavy', slug: 'bouncy-wavy-human', img: bouncyHumanImg },
-  { label: 'Straight Blend', slug: 'straight-blend', img: straightBlendImg },
-  { label: 'Premium Wavy Blend', slug: 'bouncy-blend', img: premiumWavyImg },
 ]
 
 function GuideCard({ guide }) {
@@ -65,33 +47,10 @@ function GuideCard({ guide }) {
 
 export default function CareGuides() {
   const headerAnim = useScrollAnimation({ speed: 0.4, zoomIntensity: 0.06, moveDistance: 30 })
-  const textureHeaderAnim = useScrollAnimation({ speed: 0.4, zoomIntensity: 0.06, moveDistance: 30 })
 
   return (
     <section id="care-guides" className="py-20 lg:py-28 bg-gradient-to-b from-sand/40 to-cream">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        {/* Texture finder */}
-        <div ref={textureHeaderAnim.ref} style={textureHeaderAnim.style} className="text-center mb-12">
-          <p className="type-label text-brown-400 mb-3">Find Your Type</p>
-          <h2 className="type-section-heading text-brown-900 mb-4">
-            Which BELSHAIRS unit{' '}
-            <span className="bg-gradient-to-r from-brown-600 to-brown-400 bg-clip-text text-transparent">did you purchase?</span>
-          </h2>
-          <p className="type-body text-brown-600/80 max-w-2xl mx-auto">Tap your exact texture for a personalised care guide.</p>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4 mb-20">
-          {TEXTURES.map(t => (
-            <Link key={t.slug} to={`/care/${t.slug}`} className="group flex flex-col items-center gap-2 text-center">
-              <div className="w-full aspect-square rounded-2xl overflow-hidden border-2 border-transparent group-hover:border-brown-300 transition-all duration-300 shadow-soft group-hover:shadow-soft-lg group-hover:-translate-y-1">
-                <img src={t.img} alt={t.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-              </div>
-              <span className="type-caption text-brown-700 group-hover:text-brown-900 transition-colors font-semibold">{t.label}</span>
-            </Link>
-          ))}
-        </div>
-
-        {/* Care guides */}
         <div ref={headerAnim.ref} style={headerAnim.style} className="text-center mb-16">
           <p className="type-label text-brown-400 mb-3">Expert Tips</p>
           <h2 className="type-section-heading text-brown-900 mb-4">

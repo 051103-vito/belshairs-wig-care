@@ -77,11 +77,10 @@ export default function ProductCatalog() {
         <div ref={headerAnim.ref} style={headerAnim.style} className="text-center mb-12">
           <p className="type-label text-brown-400 mb-3">Our Collection</p>
           <h2 className="type-section-heading text-brown-900 mb-4">
-            Find Your Perfect{' '}
-            <span className="bg-gradient-to-r from-brown-600 to-brown-400 bg-clip-text text-transparent">Match</span>
+            Which Belshairs Unit Did You Purchase?
           </h2>
           <p className="type-body text-brown-600/80 max-w-2xl mx-auto">
-            Tap any unit to go straight to its personalised care guide — washing, styling, storage and the full BELSHAIRS routine.
+            Tap your exact unit below to go straight to its personalised care guide.
           </p>
         </div>
 

@@ -2,6 +2,11 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { Sparkles, ArrowRight } from 'lucide-react'
 import heroImg from '../assets/images/hero.jpg'
 
+const scrollTo = (id) => {
+  const el = document.getElementById(id)
+  if (el) el.scrollIntoView({ behavior: 'smooth' })
+}
+
 export default function Hero() {
   const badgeAnim = useScrollAnimation({ speed: 0.2, zoomIntensity: 0.05, moveDistance: 20 })
   const titleAnim = useScrollAnimation({ speed: 0.35, zoomIntensity: 0.08, moveDistance: 35 })
@@ -35,14 +40,20 @@ export default function Hero() {
           </p>
 
           <div ref={ctaAnim.ref} style={ctaAnim.style} className="flex flex-col sm:flex-row items-start gap-4 mb-16">
-            <a href="#care-guides" className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full type-btn text-white bg-gradient-to-r from-brown-600 via-brown-500 to-brown-400 shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.03] active:scale-[0.98] transition-all duration-300">
-              <span>Find Your Care Guide</span>
+            <button
+              onClick={() => scrollTo('care-guides')}
+              className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full type-btn text-white bg-gradient-to-r from-brown-600 via-brown-500 to-brown-400 shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
+            >
+              <span>Start Here</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
-            <a href="#catalog" className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full type-btn text-brown-800 bg-white/80 border border-sand hover:bg-white hover:border-brown-200 shadow-soft hover:shadow-md hover:scale-[1.03] active:scale-[0.98] transition-all duration-300">
+            </button>
+            <button
+              onClick={() => scrollTo('catalog')}
+              className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full type-btn text-brown-800 bg-white/80 border border-sand hover:bg-white hover:border-brown-200 shadow-soft hover:shadow-md hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
+            >
               <span>Explore Collection</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
+            </button>
           </div>
 
           <div ref={statsAnim.ref} style={statsAnim.style} className="grid grid-cols-3 gap-8 pt-10 border-t border-sand/80 w-full max-w-lg">
@@ -71,7 +82,6 @@ export default function Hero() {
               className="relative rounded-3xl shadow-soft-xl object-cover w-full h-[520px]"
               style={{ objectPosition: 'center top' }}
             />
-            {/* Floating badge */}
             <div className="absolute -bottom-4 -left-4 bg-white/95 backdrop-blur-sm rounded-2xl px-5 py-3 shadow-soft-lg border border-sand animate-float">
               <p className="type-label text-brown-500">Confidence in every strand</p>
               <p className="type-card-title text-brown-900 mt-0.5">BELSHAIRS ✦</p>
