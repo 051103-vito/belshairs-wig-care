@@ -6,12 +6,12 @@ import Hero from './components/Hero'
 import MarqueeTicker from './components/MarqueeTicker'
 import ProductCatalog from './components/ProductCatalog'
 import CareGuides from './components/CareGuides'
+import VideoTutorials from './components/VideoTutorials'
 import About from './components/About'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import CareGuide from './pages/CareGuide.jsx'
 
-// Scroll to top on every route change
 function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => {
@@ -28,6 +28,7 @@ function HomePage() {
       <MarqueeTicker />
       <ProductCatalog />
       <CareGuides />
+      <VideoTutorials />
       <About />
       <Contact />
       <Footer />
