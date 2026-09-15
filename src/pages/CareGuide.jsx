@@ -1,4 +1,5 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import { ArrowLeft, Lightbulb } from 'lucide-react'
 import boneImg from '../assets/images/bone-straight.jpeg'
 import bodyImg from '../assets/images/body-wave.jpeg'
@@ -124,6 +125,10 @@ function Section({ title, items, numbered }) {
 }
 
 export default function CareGuide() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }, [pathname])
   const { slug } = useParams()
   const guide = GUIDES[slug] || FALLBACK
 
